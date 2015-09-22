@@ -1,0 +1,37 @@
+矩阵
+	public static void print(int[][] matrix) {
+		int m = matrix.length, n = matrix[0].length;
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++)
+				System.out.print(matrix[i][j] + " ");
+			System.out.println();
+		}
+	}
+	public static int[][] matrixs(int m, int n, String str) {
+		int[][] matrix = new int[m][n];
+		int i = 0, j = 0;
+		for (int s = 0; s < str.length() && i < m; s++) {
+			while (s < str.length()
+					&& (str.charAt(s) == '[' || str.charAt(s) == ']'
+							|| str.charAt(s) == ',' || str.charAt(s) == ' '))
+				s++;
+			int num = str.charAt(s) - '0';
+			s++;
+			while (s < str.length() && str.charAt(s) - '0' >= 0
+					&& str.charAt(s) - '0' <= 9) {
+				num = num * 10 + (str.charAt(s) - '0');
+				s++;
+			}
+			matrix[i][j] = num;
+			j++;
+			if (j == n) {
+				j = 0;
+				i++;
+			}
+		}
+		return matrix;
+	}
+主函数：
+String str = "[[1,1,2,2],[1,2,1,2],[1,2,2,1],[2,1,1,2],[2,1,2,1]]";
+int[][] matrix = matrixs(5, 4, str);
+print(matrix);

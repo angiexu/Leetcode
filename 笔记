@@ -16,57 +16,6 @@ Integer.parseInt(String.valueOf(array));
 	for	 (int i = 0; i < numbers.length; i++) 
 		ht.put(numbers[i], i);
 
-列表
-	List<Integer> list = new LinkedList();
-	int[] array = { 1, 2, 3, 4 };
-	for (int i = 0; i < array.length; i++)
-		list.add(array[i]);
-	Iterator<Integer> it = list.iterator();
-	while (it.hasNext()) 
-		System.out.println(it.next());
-	
-	List<List<Integer>> list = new ArrayList<List<Integer>>();
-	Iterator<List<Integer>> it = list.iterator();
-	while (it.hasNext()) {
-		System.out.println(it.next());
-	}
-	
-Map
-
-链表
-	public static class ListNode {
-		int val;
-		ListNode next;
-
-		ListNode(int x) {
-			val = x;
-			next = null;
-		}
-	}
-
-	public static void print(ListNode head) {
-		while (head != null) {
-			System.out.print(head.val + " ");
-			head = head.next;
-		}
-		System.out.println();
-	}
-
-	public static ListNode assign(int[] array) {
-		if (array.length == 0)
-			return null;
-		ListNode head = new ListNode(array[0]), p = head;
-		for (int i = 1; i < array.length; i++) {
-			p.next = new ListNode(array[i]);
-			p = p.next;
-		}
-		return head;
-	}
-主函数
-int[] array = { 1, 2, 3, 3, 4, 4, 5 };
-ListNode head = assign(array);
-print(head);
-	
 比较器
 	Collections.sort(intervals, new Comparator<Interval>() {
 		@Override
@@ -74,48 +23,9 @@ print(head);
 			return o1.start - o2.start;
 		}
 	});
-	
-矩阵
-	public static void print(int[][] matrix) {
-		int m = matrix.length, n = matrix[0].length;
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++)
-				System.out.print(matrix[i][j] + " ");
-			System.out.println();
-		}
-	}
-	public static int[][] matrixs(int m, int n, String str) {
-		int[][] matrix = new int[m][n];
-		int i = 0, j = 0;
-		for (int s = 0; s < str.length() && i < m; s++) {
-			while (s < str.length()
-					&& (str.charAt(s) == '[' || str.charAt(s) == ']'
-							|| str.charAt(s) == ',' || str.charAt(s) == ' '))
-				s++;
-			int num = str.charAt(s) - '0';
-			s++;
-			while (s < str.length() && str.charAt(s) - '0' >= 0
-					&& str.charAt(s) - '0' <= 9) {
-				num = num * 10 + (str.charAt(s) - '0');
-				s++;
-			}
-			matrix[i][j] = num;
-			j++;
-			if (j == n) {
-				j = 0;
-				i++;
-			}
-		}
-		return matrix;
-	}
-主函数：
-String str = "[[1,1,2,2],[1,2,1,2],[1,2,2,1],[2,1,1,2],[2,1,2,1]]";
-int[][] matrix = matrixs(5, 4, str);
-print(matrix);
 
 程序运行时间
 	long startTime = System.nanoTime(); // 获取开始时间
 	sortColors(nums); // 测试的代码段
 	long endTime = System.nanoTime(); // 获取结束时间
 	System.out.println("程序运行时间： " + (endTime - startTime) + "ns");
-

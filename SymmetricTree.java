@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class SameTree {
+public class SymmetricTree {
 	public static class TreeNode {
 		int val;
 		TreeNode left;
@@ -45,20 +45,28 @@ public class SameTree {
 		return root;
 	}
 
-	public static boolean isSameTree(TreeNode p, TreeNode q) {
+	public static boolean isSymmetric(TreeNode root) {
+		if (root == null || (root.left == null && root.right == null))
+			return true;
+		if ((root.left == null && root.right != null)
+				|| (root.left != null && root.right == null))
+			return false;
+		return Symmetric(root.left, root.right);
+	}
+
+	public static boolean Symmetric(TreeNode p, TreeNode q) {
 		if (p == null && q == null)
 			return true;
-		if (p != null && q != null && p.val == q.val)
-			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-		return false;
+		if ((p == null && q != null) || (p != null && q == null)
+				|| (p.val != q.val))
+			return false;
+		return (Symmetric(p.left, q.right) && Symmetric(p.right, q.left));
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		char[] array1 = { 2, 3, 3, 5, '#', 5, 4 };
-		TreeNode p = CreatTree(array1);
-		char[] array2 = { 2, 3, 3, 4, '#', 5, 4 };
-		TreeNode q = CreatTree(array2);
-		System.out.println(isSameTree(p, q));
+		char[] array = { 2, 3, 3, 4, 5, 5 };
+		TreeNode p = CreatTree(array);
+		System.out.println(isSymmetric(p));
 	}
 }

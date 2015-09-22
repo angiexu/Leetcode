@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class SameTree {
+二叉树
 	public static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;
-
 		TreeNode(int x) {
 			val = x;
 		}
@@ -19,6 +15,16 @@ public class SameTree {
 		else {
 			System.out.print(root.val + " ");
 			print(root.left);
+			print(root.right);
+		}
+	}
+	// 中序遍历
+	public static void print(TreeNode root) {
+		if (root == null)
+			return;
+		else {
+			print(root.left);
+			System.out.print(root.val + " ");
 			print(root.right);
 		}
 	}
@@ -44,21 +50,6 @@ public class SameTree {
 		}
 		return root;
 	}
-
-	public static boolean isSameTree(TreeNode p, TreeNode q) {
-		if (p == null && q == null)
-			return true;
-		if (p != null && q != null && p.val == q.val)
-			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-		return false;
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		char[] array1 = { 2, 3, 3, 5, '#', 5, 4 };
-		TreeNode p = CreatTree(array1);
-		char[] array2 = { 2, 3, 3, 4, '#', 5, 4 };
-		TreeNode q = CreatTree(array2);
-		System.out.println(isSameTree(p, q));
-	}
-}
+主函数
+char[] array = { 2, 3, 3, 4, '#', 5, 4 };
+TreeNode p = CreatTree(array, 0);

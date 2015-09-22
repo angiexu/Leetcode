@@ -1,0 +1,17 @@
+list
+	List<Integer> list = new LinkedList();
+	int[] array = { 1, 2, 3, 4 };
+	for (int i = 0; i < array.length; i++)
+		list.add(array[i]);
+	Iterator<Integer> it = list.iterator();
+	while (it.hasNext()) 
+		System.out.println(it.next());
+	
+	List<List<Integer>> list = new ArrayList<List<Integer>>();
+	Iterator<List<Integer>> it = list.iterator();
+	while (it.hasNext()) {
+		System.out.println(it.next());
+	}
+	
+Map
+
