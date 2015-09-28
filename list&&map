@@ -6,12 +6,20 @@ list
 	Iterator<Integer> it = list.iterator();
 	while (it.hasNext()) 
 		System.out.println(it.next());
-	
-	List<List<Integer>> list = new ArrayList<List<Integer>>();
-	Iterator<List<Integer>> it = list.iterator();
-	while (it.hasNext()) {
-		System.out.println(it.next());
-	}
-	
+		
+List<List>	
+		List<List<Integer>> lists = new ArrayList<List<Integer>>();
+		
+		Iterator<List<Integer>> its = lists.iterator();
+		while (its.hasNext()) {
+			List<Integer> list = its.next();
+			Iterator<Integer> it = list.iterator();
+			while (it.hasNext())
+				System.out.print(it.next() + " ");
+			System.out.println();
+		}
+
+ArrayList<Integer> li = (ArrayList<Integer>) ((ArrayList<Integer>) list).clone();
+							
 Map
 

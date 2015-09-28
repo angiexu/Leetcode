@@ -1,9 +1,7 @@
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class UniqueBinarySearchTreesII {
+public class MaximumDepthofBinaryTree {
 	public static class TreeNode {
 		int val;
 		TreeNode left;
@@ -36,27 +34,22 @@ public class UniqueBinarySearchTreesII {
 		return root;
 	}
 
-	// 先序遍历
-	public static void print(TreeNode root) {
+	public static int maxDepth(TreeNode root) {
 		if (root == null)
-			return;
-		else {
-			System.out.print(root.val + " ");
-			print(root.left);
-			print(root.right);
-		}
-	}
-
-	public static List<TreeNode> generateTrees(int n) {
-		List<TreeNode> list = new ArrayList<TreeNode>();
-		return list;
+			return 0;
+		if (root.left == null && root.right == null)
+			return 1;
+		if (root.left != null && root.right == null)
+			return maxDepth(root.left) + 1;
+		if (root.right != null && root.left == null)
+			return maxDepth(root.right) + 1;
+		return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<TreeNode> list = generateTrees(3);
-		Iterator<TreeNode> it = list.iterator();
-		while (it.hasNext())
-			print(it.next());
+		char[] array = { 3, 9, 20, '#', '#', 15, 7 };
+		TreeNode p = CreatTree(array);
+		System.out.println(maxDepth(p));
 	}
 }

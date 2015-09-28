@@ -1,13 +1,4 @@
 二叉树
-	public static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-		TreeNode(int x) {
-			val = x;
-		}
-	}
-
 	// 先序遍历
 	public static void print(TreeNode root) {
 		if (root == null)
@@ -26,6 +17,15 @@
 			print(root.left);
 			System.out.print(root.val + " ");
 			print(root.right);
+		}
+	}
+
+	public static class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+		TreeNode(int x) {
+			val = x;
 		}
 	}
 
@@ -52,4 +52,4 @@
 	}
 主函数
 char[] array = { 2, 3, 3, 4, '#', 5, 4 };
-TreeNode p = CreatTree(array, 0);
+TreeNode p = CreatTree(array);
