@@ -1,4 +1,3 @@
-二叉树
 	// 先序遍历
 	public static void print(TreeNode root) {
 		if (root == null)
@@ -19,7 +18,7 @@
 			print(root.right);
 		}
 	}
-
+二叉树
 	public static class TreeNode {
 		int val;
 		TreeNode left;

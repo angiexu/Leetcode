@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MinimumDepthofBinaryTree {
+public class PathSum {
 	public static class TreeNode {
 		int val;
 		TreeNode left;
@@ -34,23 +34,22 @@ public class MinimumDepthofBinaryTree {
 		return root;
 	}
 
-	public static int minDepth(TreeNode root) {
+	public static boolean hasPathSum(TreeNode root, int sum) {
+		boolean bo = false;
 		if (root == null)
-			return 0;
-		if (root.left == null && root.right == null)
-			return 1;
-		if (root.left != null && root.right == null)
-			return minDepth(root.left) + 1;
-		if (root.right != null && root.left == null)
-			return minDepth(root.right) + 1;
-		return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+			return false;
+		if (root.left == null && root.right == null && sum == root.val)
+			return true;
+		else
+			bo = hasPathSum(root.left, sum - root.val)
+					|| hasPathSum(root.right, sum - root.val);
+		return bo;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		char[] array = { 3, 9, 20, '#', '#', 15, 7 };
+		char[] array = { 5, 4, 8, 11, '#', 13, 4, 7, 2 };
 		TreeNode p = CreatTree(array);
-		System.out.println(minDepth(p));
+		System.out.println(hasPathSum(p, 23));
 	}
-
 }
