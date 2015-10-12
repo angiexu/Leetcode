@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MinimumDepthofBinaryTree {
+public class FlattenBinaryTreetoLinkedList {
 	public static class TreeNode {
 		int val;
 		TreeNode left;
@@ -34,23 +34,29 @@ public class MinimumDepthofBinaryTree {
 		return root;
 	}
 
-	public static int minDepth(TreeNode root) {
+	public static void flatten(TreeNode root) {
 		if (root == null)
-			return 0;
-		if (root.left == null && root.right == null)
-			return 1;
-		if (root.left != null && root.right == null)
-			return minDepth(root.left) + 1;
-		if (root.right != null && root.left == null)
-			return minDepth(root.right) + 1;
-		return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+			return;
+		flatten(root.left);
+		flatten(root.right);
+		TreeNode left = root.left;
+		TreeNode right = root.right;
+		root.left = null;
+		root.right = left;
+		while (root.right != null)
+			root = root.right;
+		root.right = right;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		char[] array = { 3, 9, 20, '#', '#', 15, 7 };
+		char[] array = { 1, 2, 5, 3, 4, '#', 6 };
 		TreeNode p = CreatTree(array);
-		System.out.println(minDepth(p));
-	}
+		flatten(p);
+		while (p != null) {
+			System.out.print(p.val+" ");
+			p = p.right;
+		}
 
+	}
 }
