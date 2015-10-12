@@ -35,6 +35,7 @@ public class FlattenBinaryTreetoLinkedList {
 	}
 
 	public static void flatten(TreeNode root) {
+<<<<<<< HEAD
 		if (root == null)
 			return;
 		flatten(root.left);
@@ -46,15 +47,42 @@ public class FlattenBinaryTreetoLinkedList {
 		while (root.right != null)
 			root = root.right;
 		root.right = right;
+=======
+		TreeNode p = new TreeNode(root.val);
+		p.left =root.left;
+		p.right=root.right;
+		root.left = null;
+		root.right = null;
+		print(p, root);
+	}
+
+	public static void print(TreeNode root, TreeNode p) {
+		if (root == null)
+			return;
+		else {
+			p.right = root;
+			p = p.right;
+			print(root.left, p);
+			print(root.right, p);
+		}
+>>>>>>> origin/master
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		char[] array = { 1, 2, 5, 3, 4, '#', 6 };
 		TreeNode p = CreatTree(array);
 		flatten(p);
 		while (p != null) {
 			System.out.print(p.val+" ");
+=======
+		char[] array = { 1, 2, 5, 4, '#', 6 };
+		TreeNode p = CreatTree(array);
+		flatten(p);
+		while (p != null) {
+			System.out.println(p.val);
+>>>>>>> origin/master
 			p = p.right;
 		}
 
