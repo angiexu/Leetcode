@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SumRoottoLeafNumbers {
 	public static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;
+
 		TreeNode(int x) {
 			val = x;
 		}
@@ -33,16 +33,29 @@ public class SumRoottoLeafNumbers {
 		}
 		return root;
 	}
-    public int sumNumbers(TreeNode root) {
-        int sum=0;
-		return sum;
-        
-    }
-    
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		char[] array = { 2, 3, 3, 4, '#', 5, 4 };
-		TreeNode p = CreatTree(array);
+
+	static int sums = 0;
+
+	public static int sumNumbers(TreeNode root) {
+		if (root == null)
+			return 0;
+		sumPath(root, root.val);
+		return sums;
 	}
 
+	public static void sumPath(TreeNode root, int sum) {
+		if (root.left == null && root.right == null)
+			sums += sum;
+		if (root.left != null)
+			sumPath(root.left, sum * 10 + root.left.val);
+		if (root.right != null)
+			sumPath(root.right, sum * 10 + root.right.val);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char[] array = { 0, 1 };
+		TreeNode p = CreatTree(array);
+		System.out.println(sumNumbers(p));
+	}
 }
