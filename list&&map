@@ -22,4 +22,10 @@ List<List>
 ArrayList<Integer> li = (ArrayList<Integer>) ((ArrayList<Integer>) list).clone();
 							
 Map
-
+HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		Iterator<Integer> it = map.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (int) it.next();
+			System.out.println("key:" + key);
+			System.out.println("value:" + map.get(key));
+		}
