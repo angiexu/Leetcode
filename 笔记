@@ -29,3 +29,6 @@ Integer.parseInt(String.valueOf(array));
 	sortColors(nums); // 测试的代码段
 	long endTime = System.nanoTime(); // 获取结束时间
 	System.out.println("程序运行时间： " + (endTime - startTime) + "ns");
+	
+字符串分割
+String[] strArray = data.substring(1, data.length() - 1).split(", ");
