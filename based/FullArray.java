@@ -15,7 +15,7 @@ public class FullArray {
 			return;
 		char[] num = new char[n + 1];
 		num[n] = '\0';
-		for (int i = 0; i < 10; i++) {
+		for (int i = 1; i < 10; i++) {
 			num[0] = (char) (i + '0');
 			full(num, n, 0);
 		}
@@ -26,7 +26,7 @@ public class FullArray {
 			print(num);
 			return;
 		}
-		for (int i = 0; i < 10; i++) {
+		for (int i = 1; i < 10; i++) {
 			num[index + 1] = (char) (i + '0');
 			full(num, length, index + 1);
 		}
