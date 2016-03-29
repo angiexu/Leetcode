@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Permutations {
-	public static List<List<Integer>> permute(int[] nums) {
+	public static List<List<Integer>> permute1(int[] nums) {
 		List<List<Integer>> list = new LinkedList<List<Integer>>();
 		if (nums.length == 0)
 			return list;
@@ -26,9 +26,40 @@ public class Permutations {
 		return list;
 	}
 
+	public static List<List<Integer>> permute(int[] nums) {
+		List<List<Integer>> list = new LinkedList<List<Integer>>();
+		if (nums.length == 0)
+			return list;
+		else {
+			List<Integer> li = new LinkedList<Integer>();
+			for (int i = 0; i < nums.length; i++)
+				li.add(nums[i]);
+			list.add(li);
+			return per(list, 0);
+		}
+	}
+
+	public static List<List<Integer>> per(List<List<Integer>> list, int begin) {
+		if (begin == list.get(0).size())
+			return list;
+		int size = list.size();
+		for (int i = 0; i < size; i++) {
+			int end = list.get(0).size();
+			for (int j = begin + 1; j < end; j++) {
+				List<Integer> l = new LinkedList<Integer>(list.get(i));
+				int x = l.get(begin);
+				l.set(begin, l.get(j));
+				l.set(j, x);
+				list.add(l);
+			}
+		}
+		list = per(list, begin + 1);
+		return list;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = { 1, 2, 3,4 };
+		int[] nums = { 1, 2, 3, 4 };
 		List<List<Integer>> list = new ArrayList<List<Integer>>();
 		list = permute(nums);
 		Iterator<List<Integer>> it = list.iterator();
