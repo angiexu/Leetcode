@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class TwoSum {
@@ -186,7 +187,7 @@ public class TwoSum {
 	// }
 
 	// 第四种
-	public static int[] twoSum(int[] numbers, int target) {
+	public static int[] twoSum1(int[] numbers, int target) {
 		Hashtable<Integer, Integer> ht = new Hashtable<Integer, Integer>();
 		int[] result = { 0, 0 };
 		for (int i = 0; i < numbers.length; i++) {
@@ -203,10 +204,32 @@ public class TwoSum {
 		return result;
 	}
 
+	public static int[] twoSum(int[] numbers, int target) {
+		int[] n = numbers.clone();
+		Arrays.sort(n);
+		int start = 0, end = n.length - 1;
+		while (start < end) {
+			if (n[start] + n[end] < target)
+				start++;
+			else if (n[start] + n[end] > target)
+				end--;
+			else
+				break;
+		}
+		int[] result = { -1, -1 };
+		for (int i = 0; i < numbers.length; i++) {
+			if (result[0] == -1 && numbers[i] == n[start])
+				result[0] = i;
+			else if (result[1] == -1 && numbers[i] == n[end])
+				result[1] = i;
+		}
+		return result;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] numbers = { 4, 3, 2, 8 };
-		int target = 6;
+		int[] numbers = { 2, 1, 9, 4, 4, 56, 90, 3 };
+		int target = 8;
 		int[] temp = twoSum(numbers, target);
 		for (int i = 0; i < 2; i++)
 			System.out.println(temp[i]);

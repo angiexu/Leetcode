@@ -24,7 +24,7 @@ public class ReverseInteger {
 	}
 
 	// 第二种
-	public static int reverse(int x) {
+	public static int reverse2(int x) {
 		if (x > 2147483647 || x < -2147483648)
 			return 0;
 		int res = 0;
