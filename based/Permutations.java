@@ -17,16 +17,16 @@ public class Permutations {
 		if (begin == n) {
 			perS.add(String.valueOf(s));
 			return;
-		} else {
-			for (int i = begin; i < n; i++) {
-				char temp = s[i];
-				s[i] = s[begin];
-				s[begin] = temp;
-				full(s, begin + 1, perS);
-				temp = s[i];
-				s[i] = s[begin];
-				s[begin] = temp;
-			}
+		}
+		for (int i = begin; i < n; i++) {
+			char temp = s[i];
+			s[i] = s[begin];
+			s[begin] = temp;
+			full(s, begin + 1, perS);
+			temp = s[i];
+			s[i] = s[begin];
+			s[begin] = temp;
+
 		}
 	}
 
