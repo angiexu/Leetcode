@@ -1,6 +1,6 @@
 public class LengthofLastWord {
 	// 第一种：200s
-	public static int lengthOfLastWord(String s) {
+	public static int lengthOfLastWord1(String s) {
 		int n = 0;
 		int k = 0;
 		char[] array = s.toCharArray();
@@ -31,9 +31,21 @@ public class LengthofLastWord {
 	// return n;
 	// }
 
+	public static int lengthOfLastWord(String s) {
+		if (s.length() == 0)
+			return 0;
+		String[] array = s.split(" ");
+		if (array.length == 0)
+			return 0;
+		int k = array.length;
+		if (array[k - 1].charAt(0) == ' ')
+			return array[k - 1].length() - 1;
+		return array[k - 1].length();
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s = "  a";
+		String s = " ";
 		System.out.println(lengthOfLastWord(s));
 
 	}
