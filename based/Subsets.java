@@ -10,11 +10,11 @@ public class Subsets {
 		if (n == 0)
 			return subS;
 		for (int count = 0; count <= n; count++)
-			sub(s, 0, count, new String(), subS);
+			set(s, 0, count, new String(), subS);
 		return subS;
 	}
 
-	public static void sub(char[] s, int begin, int count, String t,
+	public static void set(char[] s, int begin, int count, String t,
 			ArrayList<String> subS) {
 		if (t.length() == count) {
 			subS.add(t);
@@ -22,7 +22,7 @@ public class Subsets {
 		}
 		for (int i = begin; i < s.length; i++) {
 			t = t + s[i];
-			sub(s, i + 1, count, t, subS);
+			set(s, i + 1, count, t, subS);
 			t = t.substring(0, t.length() - 1);
 		}
 	}

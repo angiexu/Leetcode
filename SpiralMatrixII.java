@@ -1,42 +1,43 @@
 public class SpiralMatrixII {
 	public static int[][] generateMatrix(int n) {
-		int[][] matrix = new int[n][n];
+		int m = n - 2;
+		int[][] matrix = new int[n][m];
 		if (n == 0)
 			return matrix;
-		int rows = n, columns = n;
-		int rs = 0, cs = 0;
-		int num = n * n, k = 1;
-		while (k <= num) {
-			for (int i = cs; i < columns && k <= num; i++) {
-				matrix[rs][i] = k;
-				k++;
+		int rows = matrix.length, lines = matrix[0].length;
+		int startr = 0, startl = 0, endr = rows - 1, endl = lines - 1;
+		int k = 1;
+		while (startr * 2 < rows && startl * 2 < lines) {
+			for (int i = startl; i <= endl; i++)
+				matrix[startr][i] = k++;
+			startr++;
+			if (startr < endr) {
+				for (int i = startr; i <= endr; i++)
+					matrix[i][endl] = k++;
+				endl--;
 			}
-			rs++;
-			for (int i = rs; i < rows && k <= num; i++) {
-				matrix[i][columns - 1] = k;
-				k++;
+			if (startr < endr && startl < endl) {
+				for (int i = endl; i >= startl; i--)
+					matrix[endr][i] = k++;
+				endr--;
 			}
-			columns--;
-			for (int i = columns - 1; i >= cs && k <= num; i--) {
-				matrix[rows - 1][i] = k;
-				k++;
+			if (startr < endr && startl < endl) {
+				for (int i = endr; i >= startr; i--)
+					matrix[i][startl] = k++;
+				startl++;
 			}
-			rows--;
-			for (int i = rows - 1; i >= rs && k <= num; i--) {
-				matrix[i][cs] = k;
-				k++;
-			}
-			cs++;
 		}
 		return matrix;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[][] matrix = generateMatrix(3);
-		for (int i = 0; i < matrix.length; i++)
-			for (int j = 0; j < matrix.length; j++)
-				System.out.println(matrix[i][j]);
+		int[][] matrix = generateMatrix(5);
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++)
+				System.out.print(matrix[i][j] + " ");
+			System.out.println();
+		}
 	}
 
 }
